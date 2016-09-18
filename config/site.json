@@ -1,0 +1,11 @@
+{
+  "title" : "Alimenté",
+  "tagline" : "Feed. Fuel. Nurture. Nourish.",
+  "domain" : "alimente.co",
+  "protocol" : "https://",
+  "description": "Plant-based nutrition and ethical living",
+  "shortDescription": "Plant-based nutrition and ethical living",
+  "keywords": "nutrition, vegan, plant-based",
+  "ogImageDefault": "/images/layout/og-image-default.jpg",
+  "logo": "https://images.contentful.com/inc5q5bhi8nh/5QOMbJcTiECUYi4oQA4YMg/37bde65c96750f6fb142a3415d2c2c60/alimente-avocados.jpg"
+}

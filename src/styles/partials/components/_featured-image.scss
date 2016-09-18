@@ -1,0 +1,6 @@
+.featured-image-wrapper {
+	@include responsive-square(100%);
+}
+.featured-image {
+  @include image-circle();
+}

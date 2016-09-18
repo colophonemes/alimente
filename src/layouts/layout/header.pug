@@ -1,0 +1,19 @@
+mixin headerLogo(type)
+    #header-logo
+      include ../components/logo
+
+mixin headerText(title)
+  h1.page-title#page-title!= typogr.typogrify(title)
+
+mixin header(options)
+  - var opts = options || {};
+  - var showLogo = opts.logo === false ? false : true
+  - var showBreadcrumbs = opts.breadcrumbs === false ? false : true
+  - var showPagetitle = opts.title === false ? false : true
+  header#header
+    if showLogo
+      +headerLogo()
+    if showBreadcrumbs
+      include ../components/breadcrumbs
+    if showPagetitle
+      +headerText(title)

@@ -1,0 +1,29 @@
+extends ./page
+
+block header
+  header#header
+    .row
+    .col-md-6.col-md-offset-3
+      #header-logo
+        include ./components/logo
+        +logo({tagline: true})
+    h1.page-title.sr-only!= typogr.typogrify(site.title)
+
+block content
+  .home-content#content
+    main
+      .row
+        .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+          section.home-introduction.section-no-divider
+            != contents
+          if articles
+            include ./components/cards
+            section.home-featured-articles.section-divider
+              .row
+                each article in articles.slice(0,2)
+                  .col-md-6
+                    +card(article)
+              .row
+                each article in articles.slice(2,5)
+                  .col-md-4
+                    +card(article)

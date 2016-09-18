@@ -1,0 +1,14 @@
+mixin logo(opts)
+  - var options = opts || {}
+  - var showTagline = options.tagline === true
+  .alimente-logo
+    .alimente-logo-image-wrapper
+      img.alimente-logo-image(src=site.logo alt="Alimenté Logo")
+    .alimente-logo-text-wrapper
+      img.alimente-logo-text(src="/images/alimente-logo.svg" alt="Alimenté")
+  if showTagline
+    .alimente-logo-tagline-wrapper
+      hr.alimente-logo-top-ruler
+      h2.alimente-logo-tagline= site.tagline
+      p.alimente-logo-description= site.shortDescription
+      hr.alimente-logo-bottom-ruler

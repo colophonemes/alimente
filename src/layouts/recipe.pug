@@ -1,0 +1,34 @@
+extends ./layout
+
+block header
+  include ./components/breadcrumbs
+  include ./components/featured-image
+  +featuredImage()
+  include ./layout/header
+  +header({breadcrumbs:false, logo: false})
+
+block content
+  #content
+    main
+      include ./components/featured-image
+      +featuredImage()
+      if description
+        .row
+          .col-md-6
+            section.recipe-description
+              != description
+      .row
+        .col-md-6
+          if ingredients
+            section.recipe-ingredients
+              h2.recipe-ingredients-title Ingredients
+              != ingredients
+        .col-md-6
+          if method
+            section.recipe-method
+              h2.recipe-method-title Method
+              != method
+          if notes
+            section.recipe-notes
+              h2.recipe-notes Notes
+              != notes

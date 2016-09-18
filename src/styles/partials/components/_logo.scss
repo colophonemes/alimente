@@ -1,0 +1,44 @@
+$logo-image-width: 25%;
+$logo-text-width: 65%;
+$logo-text-spacing-left: 10%;
+$logo-text-spacing-top: 4%;
+
+.alimente-logo {
+  width: 100%;
+  @include clearfix();
+  text-align: left;
+}
+.alimente-logo-image-wrapper {
+  width: $logo-image-width;
+}
+.alimente-logo-text-wrapper {
+  width: $logo-text-width;
+  padding-top: $logo-text-spacing-top;
+  margin-left: $logo-text-spacing-left;
+}
+.alimente-logo-text-wrapper,
+.alimente-logo-image-wrapper {
+  float: left;
+}
+
+.alimente-logo-tagline-wrapper {
+  hr {
+    width: 100%;
+    margin: $grid-gutter-width auto;
+    color: #333;
+  }
+}
+.alimente-logo-tagline {
+  font-size: 1.57em;
+}
+.alimente-logo-description {
+  font-size: 1.1em;
+  font-style: italic;
+}
+.alimente-logo-top-ruler {
+  width: 30%;
+}
+.alimente-logo-bottom-ruler {
+  margin-bottom: 0;
+  width: 30%;
+}
