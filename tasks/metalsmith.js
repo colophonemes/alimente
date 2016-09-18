@@ -93,11 +93,15 @@ const createSeriesHierarchy = require(paths.lib('metalsmith/plugins/create-serie
 message.status('Loaded metadata plugins')
 
 // only require in production
+let htmlMinifier
+let purifyCSS
+let cleanCSS
+let sitemap
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-  const htmlMinifier = require('metalsmith-html-minifier')
-  const purifyCSS = require(paths.lib('metalsmith/plugins/purifycss.js'))
-  const cleanCSS = require('metalsmith-clean-css')
-  const sitemap = require('metalsmith-sitemap')
+  htmlMinifier = require('metalsmith-html-minifier')
+  purifyCSS = require(paths.lib('metalsmith/plugins/purifycss.js'))
+  cleanCSS = require('metalsmith-clean-css') 
+  sitemap = require('metalsmith-sitemap')
   message.status('Loaded production modules')
 }
 // utility global const to hold 'site' info from our settings file, for reuse in other plugins
@@ -221,7 +225,7 @@ function build (buildCount) {
     // stuff to only do in production
     if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
       metalsmith
-        .use(_message.info('Minifying HTML', chalk.dim))
+        .use(_message.info('Minifying HTML'))
         .use(htmlMinifier('**/*.html', {
           minifyJS: true
         }))
