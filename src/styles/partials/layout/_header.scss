@@ -2,11 +2,16 @@
 	text-align: center;
 	@include clearfix();
 }
-.header-logo {
+#header-logo {
+	margin-top: $grid-gutter-width * 3;
 	margin-bottom: $grid-gutter-width;
 }
 .page-title {
 	color: $site-dark-gray;
+	.subtitle {
+		display: block;
+		color: #999;
+	}
 }
 .breadcrumb {
 	text-align: left;

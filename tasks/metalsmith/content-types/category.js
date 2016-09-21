@@ -14,6 +14,6 @@ module.exports = {
     sort: 'title',
     reverse: false
   },
-  createPage: true,
+  createPage: false,
   template: 'collection.pug'
 }

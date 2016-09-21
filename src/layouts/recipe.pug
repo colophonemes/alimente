@@ -12,23 +12,20 @@ block content
     main
       include ./components/featured-image
       +featuredImage()
-      if description
-        .row
-          .col-md-6
-            section.recipe-description
-              != description
       .row
-        .col-md-6
+        .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+          if description
+            section.section-no-divider.recipe-description
+              != description
           if ingredients
-            section.recipe-ingredients
+            section.section-divider.recipe-ingredients
               h2.recipe-ingredients-title Ingredients
               != ingredients
-        .col-md-6
           if method
-            section.recipe-method
+            section.section-divider.recipe-method
               h2.recipe-method-title Method
               != method
           if notes
-            section.recipe-notes
+            section.section-divider.recipe-notes
               h2.recipe-notes Notes
               != notes

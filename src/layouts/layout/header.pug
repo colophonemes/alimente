@@ -3,7 +3,20 @@ mixin headerLogo(type)
       include ../components/logo
 
 mixin headerText(title)
+  //- work out if we need a subtitle
+  - var subtitle = false
+  if /[\(:]/.test(title)
+    - var titleSegments = title.split(/[\(:]/)
+    if /[\(]/.test(title)
+      if title.substr(title.length-1) === ')'
+        - title = titleSegments[0].trim()
+        - subtitle = `(${titleSegments[1].trim()}`
+    else if /[:]/.test(title)
+        - title = `${titleSegments[0].trim()}:`
+        - subtitle = titleSegments[1].trim()
   h1.page-title#page-title!= typogr.typogrify(title)
+    if subtitle
+      span.subtitle!= typogr.typogrify(subtitle)
 
 mixin header(options)
   - var opts = options || {};

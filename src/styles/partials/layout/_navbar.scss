@@ -5,17 +5,29 @@
 	font-family: $font-family-sans-serif;
 	transition: background 0.7s ease-in-out, border 0.7s ease-in-out;
 	li.nav {
+		&>a {
+			transition: color 0.7s ease-in-out;
+			color: $site-primary;
+		}
 		&.active>a {
 		    border-bottom: 4px solid $site-primary;
 		    padding-bottom: 15.5px;
 		}
 	}
 	&.nav-minimal {
-		// background-color: rgba(255,255,255,0);
+		background-color: rgba(255,255,255,0);
 		border-color: transparent;
 		.navbar-header-brand-logo-image-wrapper,
 		.navbar-header-brand-logo-text-wrapper {
 			opacity: 0;
+		}
+		li.nav {
+			&>a {
+				color: #999;
+			}
+			&.active>a {
+			    border-bottom-color: #999;
+			}
 		}
 	}
 }

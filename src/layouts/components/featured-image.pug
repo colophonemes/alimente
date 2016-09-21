@@ -1,8 +1,6 @@
 mixin featuredImage(image)
   - var fi = image || featuredImage || false
   if fi
-    .row
-      .col-md-8.col-md-offset-2
-        .featured-image-wrapper
-          .content
-            img.featured-image(src=contentfulImage(fi))
+    .featured-image-wrapper
+      .content
+        .featured-image(style=fi?`background-image:url(${contentfulImage(fi)})`:false)

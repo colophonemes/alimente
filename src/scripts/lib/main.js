@@ -16,7 +16,7 @@ function windowScrollOnHashChange () {
 function toggleMinimalMenuBar () {
   // show and hide the menu bar background/logo depending on whether the main logo is showing
 
-  var mainLogo = $('#header-logo')
+  var mainLogo = $('#header-logo .alimente-logo-image-wrapper')
   var nav = $('#navbar-main')
   if (!mainLogo.length) {
     nav.removeClass('nav-minimal')

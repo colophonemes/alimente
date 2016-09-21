@@ -52,7 +52,6 @@ const remapLayoutNames = require(paths.lib('metalsmith/plugins/remap-layout-name
 const shortcodes = require('metalsmith-shortcodes')
 const lazysizes = require('metalsmith-lazysizes')
 const icons = require('metalsmith-icons')
-const favicons = require(paths.lib('metalsmith/plugins/favicons'))
 message.status('Loaded layout plugins')
 // methods to inject into layouts / shortcodes
 const layoutUtils = {
@@ -78,7 +77,6 @@ const injectSiteMetadata = require(paths.lib('metalsmith/plugins/inject-site-met
 const processContentfulMetadata = require(paths.lib('metalsmith/plugins/process-contentful-metadata'))
 const contentTypes = require('../lib/metalsmith/helpers/content-types')
 const postCategoryCollections = require(paths.lib('metalsmith/plugins/post-category-collections'))
-const postCategoryPagination = require(paths.lib('metalsmith/plugins/post-category-pagination'))
 const collections = require('metalsmith-collections')
 const checkSlugs = require(paths.lib('metalsmith/plugins/check-slugs.js'))
 const excerpts = require('metalsmith-excerpts')
@@ -93,14 +91,16 @@ const createSeriesHierarchy = require(paths.lib('metalsmith/plugins/create-serie
 message.status('Loaded metadata plugins')
 
 // only require in production
+let favicons
 let htmlMinifier
 let purifyCSS
 let cleanCSS
 let sitemap
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
+  favicons = require(paths.lib('metalsmith/plugins/favicons'))
   htmlMinifier = require('metalsmith-html-minifier')
   purifyCSS = require(paths.lib('metalsmith/plugins/purifycss.js'))
-  cleanCSS = require('metalsmith-clean-css') 
+  cleanCSS = require('metalsmith-clean-css')
   sitemap = require('metalsmith-sitemap')
   message.status('Loaded production modules')
 }
@@ -138,16 +138,19 @@ function build (buildCount) {
       .use(remapLayoutNames())
       .use(createContentfulFileIdMap())
       .use(_message.info('Processed Contentful metadata'))
-      .use(postCategoryCollections(collections, pagination))
-      .use(collections(contentTypes.collections))
-      .use(collections({
-        articles: {
-          pattern: '@(posts|recipes)/**/index.html',
-          sort: 'date',
-          reverse: true
-        }
+      .use(postCategoryCollections({
+        collectionsPlugin: collections,
+        paginationPlugin: pagination,
+        collections: Object.assign(contentTypes.collections,
+          {
+            articles: {
+              pattern: '@(posts|recipes)/**/index.html',
+              sort: 'date',
+              reverse: true
+            }
+          }),
+        pagination: contentTypes.pagination
       }))
-      .use(pagination(contentTypes.pagination))
       .use(_message.info('Added files to collections'))
       .use(checkSlugs())
       .use(create404())
@@ -198,6 +201,11 @@ function build (buildCount) {
         filter: '@(series|links|categories)/**'
       }))
       .use(saveRawContents())
+    if (process.env.NODE_ENV !== 'development') {
+      metalsmith.use(favicons('images/favicon.png'))
+      .use(_message.info('Created favicons'))
+    }
+    metalsmith
       .use(layouts(Object.assign({
         engine: 'pug',
         directory: paths.layouts(),
@@ -212,7 +220,7 @@ function build (buildCount) {
       .use(lazysizes({
         widths: [100, 480, 768, 992, 1200, 1800],
         qualities: [80, 70, 70, 70, 70, 70],
-        backgrounds: ['.card-thumbnail'],
+        backgrounds: ['.card-thumbnail', '.featured-image'],
         ignore: '/images/**',
         ignoreSelectors: '.content-block-content',
         querystring: {
