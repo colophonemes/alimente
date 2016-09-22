@@ -1,0 +1,7 @@
+nav#navbar-main.navbar.navbar-primary.navbar-fixed-top.nav-minimal
+    .container
+        .navbar-header
+            include ./navbar-header-brand
+        #navbar-main-collapse.navbar-main-menu.collapse.navbar-collapse
+          include ./navbar
+          +navbar('main-navigation','navbar-nav')

@@ -13,23 +13,18 @@
 		text-decoration: underline;
 	}
 }
-.footer-legal {
-	@media(min-width:$screen-md){
-		margin-top: 25px;
+.footer-navigation-wrapper {
+
+}
+.footer-navigation {
+	text-align: center;
+	&>li.nav {
+		display: inline-block;
 	}
 }
-
-.footer {
-	.newsletter-signup-form {
-		input, .btn{
-			border-color: #555;
-			color: #555;
-		}
-		input {
-			background-color: $site-muted;
-		}
-		.btn {
-			background-color: darken($site-muted,5%);
-		}
+.footer-legal {
+	text-align: center;
+	@media(min-width:$screen-md){
+		margin-top: 25px;
 	}
 }

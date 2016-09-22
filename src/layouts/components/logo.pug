@@ -9,6 +9,6 @@ mixin logo(opts)
   if showTagline
     .alimente-logo-tagline-wrapper
       hr.alimente-logo-top-ruler
-      h2.alimente-logo-tagline= site.tagline
-      p.alimente-logo-description= site.shortDescription
+      h2.alimente-logo-tagline!= typogr.typogrify(site.tagline)
+      p.alimente-logo-description!= typogr.typogrify(site.shortDescription)
       hr.alimente-logo-bottom-ruler

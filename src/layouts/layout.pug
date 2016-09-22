@@ -2,7 +2,7 @@ doctype html
 html.no-js(prefix="og: http://ogp.me/ns#")
     include ./layout/head
     body(class=[slug==="/" ? 'home' : slug, collectionSlug])
-        include ./layout/navbar
+        include ./layout/navbar-main
         block contentWrapper
             section#content-wrapper
                 .container

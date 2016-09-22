@@ -1,7 +1,8 @@
 footer.footer#footer
   .container
-    .row
-      .col-md-6.footer-left
-        
-      .col-md-6.footer-right
-        
+    .footer-navigation-wrapper
+      include ./navbar
+      +navbar('footer-navigation', 'footer-navigation')
+    .footer-legal
+      p All content © Emma Gray 2016#{moment().format('YYYY') !== '2016' ? ` &mdash; ${moment().format('YYYY')}` : ''}
+          

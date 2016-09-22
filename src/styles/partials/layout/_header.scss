@@ -3,7 +3,9 @@
 	@include clearfix();
 }
 #header-logo {
-	margin-top: $grid-gutter-width * 3;
+	@media(min-width: $screen-md) {
+		margin-top: $grid-gutter-width * 3;
+	}
 	margin-bottom: $grid-gutter-width;
 }
 .page-title {
