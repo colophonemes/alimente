@@ -39,6 +39,9 @@
 	>.first-paragraph {
 		// @include first-paragraph();
 	}
+	a {
+		text-decoration: underline;
+	}
 	hr {
 		width: 50%;
 		text-align: center;
