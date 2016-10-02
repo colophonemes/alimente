@@ -8,7 +8,7 @@ mixin navbar(navSlug, classes)
                         li.nav(class=(breadcrumb_path && breadcrumb_path.length && breadcrumb_path[0].path === file.path.replace(/\//g,'') ? 'active' : ''))
                             a(href=file.path, id="navbar-link-"+file.slug, title=file.title)!= file.shortTitle || file.title
                     when 'category'
-                        if collections[file.slug] && collections[file.slug].length
+                        if collections[camelCase(file.slug)] && collections[camelCase(file.slug)].length
                             li.nav(class=(breadcrumb_path && breadcrumb_path.length && breadcrumb_path[0].path === file.slug ? 'active' : ''))
                                 a(href=`/${file.slug}/`, id="navbar-link-"+file.slug, title=file.title)!= file.shortTitle || file.title
                     when 'link'

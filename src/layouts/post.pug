@@ -1,4 +1,30 @@
 extends ./page
 
+block header
+  .row
+    .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+      include ./components/breadcrumbs
+      include ./components/featured-image
+      +featuredImage()
+      include ./layout/header
+      header#header
+        if /^all about/i.test(title)
+          - var parts = title.split(' ')
+          - var titleIntro = parts.slice(0, 2).join(' ')
+          - var titleSubject = parts.slice(2).join(' ')
+          h1.page-title#page-title
+            span.all-about-title-intro!= titleIntro
+            span.all-about-title-subject!= typogr.typogrify(titleSubject)
+        else
+          +headerText(title)
+
 block postContent
   include ./components/series-pagination
+
+
+  // split 'all about' page titles
+      if () {
+        debug(`Splitting an 'all about' post %s`, file)
+        
+        $('h1.page-title').text('ALL ABOUT SHIT')
+      }

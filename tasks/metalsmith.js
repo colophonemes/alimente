@@ -60,6 +60,7 @@ const layoutUtils = {
   url: require('url'),
   moment: require('moment'),
   slugify: require('slug'),
+  camelCase: require('camelcase'),
   strip: require(paths.helpers('strip-tags')),
   contentfulImage: require(paths.helpers('contentful-image')),
   environment: process.env.NODE_ENV
