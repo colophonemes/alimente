@@ -186,6 +186,7 @@ function build (buildCount) {
       .use(_message.info('Built series hierarchy'))
       // Build HTML files
       .use(markdown({
+        breaks: true,
         plugin: {
           pattern: '**/*.html',
           fields: ['contents', 'ingredients', 'method', 'notes']
