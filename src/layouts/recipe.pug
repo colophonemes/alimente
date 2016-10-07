@@ -12,9 +12,9 @@ block content
     main
       .row
         .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
-          if description
+          if contents.length
             section.section-no-divider.recipe-description
-              != description
+              != contents
           if ingredients
             section.section-divider.recipe-ingredients
               h2.recipe-ingredients-title Ingredients
