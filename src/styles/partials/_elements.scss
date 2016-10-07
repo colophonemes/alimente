@@ -24,6 +24,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+// hacky fix — replace the wrapping code
+p>img {
+    margin: 45px auto;
+}
+
 figure {
 	margin: 0 0 $grid-gutter-width/2;
 	.img-responsive {
@@ -60,7 +65,7 @@ table {
 		background-color: darken($site-secondary,2%);
 	}
 }
-ul {
+ul, ol {
 	padding-left: 0;
 }
 
